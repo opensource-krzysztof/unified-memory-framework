@@ -11,8 +11,8 @@ permissions:
   contents: read
 
 env:
-  BUILD_DIR : "${{github.workspace}}/build"
-  INSTALL_DIR: "${{github.workspace}}/build/install"
+  BUILD_DIR : "${{github.workspace}}\build"
+  INSTALL_DIR: "${{github.workspace}}\build\install"
 
 jobs:
 #   fuzz-test:
@@ -218,7 +218,7 @@ jobs:
   icx:
    name: ICX
    env:
-     VCPKG_PATH: "${{github.workspace}}\build\vcpkg\packages\hwloc_x64-windows;${{github.workspace}}\build\vcpkg\packages\tbb_x64-windows;${{github.workspace}}\build\vcpkg\packages\jemalloc_x64-windows"
+     VCPKG_PATH: ""
    strategy:
      matrix:
        os: ['windows-2019', 'windows-2022']

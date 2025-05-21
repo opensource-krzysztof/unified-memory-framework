@@ -12,7 +12,7 @@ permissions:
 
 env:
   BUILD_DIR : "${{github.workspace}}\build"
-  INSTALL_DIR: "${{github.workspace}}\build\install"
+  INSTALL_DIR: "${{env.BUILD_DIR}}\\install"
 
 jobs:
 #   fuzz-test:

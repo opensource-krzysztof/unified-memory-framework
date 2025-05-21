@@ -218,7 +218,7 @@ jobs:
   icx:
    name: ICX
    env:
-     VCPKG_PATH: "${{github.workspace}}/build/vcpkg/packages/hwloc_x64-windows;${{github.workspace}}/build/vcpkg/packages/tbb_x64-windows;${{github.workspace}}/build/vcpkg/packages/jemalloc_x64-windows"
+     VCPKG_PATH: "${{github.workspace}}\build\vcpkg\packages\hwloc_x64-windows;${{github.workspace}}\build\vcpkg\packages\tbb_x64-windows;${{github.workspace}}\build\vcpkg\packages\jemalloc_x64-windows"
    strategy:
      matrix:
        os: ['windows-2019', 'windows-2022']
@@ -293,7 +293,7 @@ jobs:
    - name: test msys2
      shell: msys2 {0}
      run: |
-       dir /s /b /o:gn
+       find .
        
    - name: Configure build
      shell: msys2 {0}

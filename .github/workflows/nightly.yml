@@ -301,7 +301,7 @@ jobs:
      run: |
        cmake ^
          -B ${{env.BUILD_DIR}} ^
-         -DCMAKE_PREFIX_PATH="D:\a\unified-memory-framework\unified-memory-framework\build\vcpkg\packages\hwloc_x64-windows;D:\a\unified-memory-framework\unified-memory-framework\build\vcpkg\packages\tbb_x64-windows;${{github.workspace}}\build\vcpkg\packages\jemalloc_x64-windows" ^
+         -DCMAKE_PREFIX_PATH="/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/hwloc_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/tbb_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/jemalloc_x64-windows" ^
          -DCMAKE_C_COMPILER=${{matrix.compiler.c}} ^
          -DCMAKE_CXX_COMPILER=${{matrix.compiler.cxx}} ^
          -G "Unix Makefiles" ^

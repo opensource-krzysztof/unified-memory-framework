@@ -295,12 +295,13 @@ jobs:
      run: |
        pwd
        find .
+       find /c
        
    - name: Configure build
      shell: msys2 {0}
      run: |
        cmake \
-         -B "/d/a/unified-memory-framework/unified-memory-framework/build" \
+         -B "/d/a/unified-memory-framework/unified-memory-framework/lebuild" \
          -DCMAKE_PREFIX_PATH="/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/hwloc_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/tbb_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/jemalloc_x64-windows" \
          -DCMAKE_C_COMPILER=${{matrix.compiler.c}} \
          -DCMAKE_CXX_COMPILER=${{matrix.compiler.cxx}} \

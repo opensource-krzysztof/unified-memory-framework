@@ -299,18 +299,18 @@ jobs:
    - name: Configure build
      shell: msys2 {0}
      run: |
-       cmake ^
-         -B "/d/a/unified-memory-framework/unified-memory-framework/build" ^
-         -DCMAKE_PREFIX_PATH="/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/hwloc_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/tbb_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/jemalloc_x64-windows" ^
-         -DCMAKE_C_COMPILER=${{matrix.compiler.c}} ^
-         -DCMAKE_CXX_COMPILER=${{matrix.compiler.cxx}} ^
-         -G "Unix Makefiles" ^
-         -DUMF_BUILD_SHARED_LIBRARY=${{matrix.shared_library}} ^
-         -DUMF_FORMAT_CODE_STYLE=OFF ^
-         -DUMF_DEVELOPER_MODE=ON ^
-         -DUMF_BUILD_LIBUMF_POOL_JEMALLOC=ON ^
-         -DUMF_BUILD_LEVEL_ZERO_PROVIDER=ON ^
-         -DUMF_BUILD_CUDA_PROVIDER=ON ^
+       cmake \
+         -B "/d/a/unified-memory-framework/unified-memory-framework/build" \
+         -DCMAKE_PREFIX_PATH="/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/hwloc_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/tbb_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/jemalloc_x64-windows" \
+         -DCMAKE_C_COMPILER=${{matrix.compiler.c}} \
+         -DCMAKE_CXX_COMPILER=${{matrix.compiler.cxx}} \
+         -G "Unix Makefiles" \
+         -DUMF_BUILD_SHARED_LIBRARY=${{matrix.shared_library}} \
+         -DUMF_FORMAT_CODE_STYLE=OFF \
+         -DUMF_DEVELOPER_MODE=ON \
+         -DUMF_BUILD_LIBUMF_POOL_JEMALLOC=ON \
+         -DUMF_BUILD_LEVEL_ZERO_PROVIDER=ON \
+         -DUMF_BUILD_CUDA_PROVIDER=ON \
          -DUMF_TESTS_FAIL_ON_SKIP=ON
   
    - name: Build UMF

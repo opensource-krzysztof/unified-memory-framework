@@ -290,12 +290,6 @@ jobs:
        update: true
        install: "make cmake"
 
-   - name: test msys2
-     shell: msys2 {0}
-     run: |
-       pwd
-       find .
-       find /c
 
    - name: Build UMF
      shell: cmd

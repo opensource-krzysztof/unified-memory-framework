@@ -296,10 +296,21 @@ jobs:
        pwd
        find .
        find /c
-       
+
+   - name: Build UMF
+     shell: cmd
+     run: |
+       call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+       call "C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat"
+       echo "PATH=%PATH%" >> $env:GITHUB_ENV
+      
    - name: Configure build
      shell: msys2 {0}
      run: |
+       export PATH=$(echo "$PATH" | sed -e 's/\\/\//g' -e 's/\([A-Za-z]\):\//\/\1\//g')
+       # Verify environments
+       icx --version
+       gcc --version
        cmake \
          -B "/d/a/unified-memory-framework/unified-memory-framework/bulid" \
          -DCMAKE_PREFIX_PATH="/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/hwloc_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/tbb_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/jemalloc_x64-windows" \

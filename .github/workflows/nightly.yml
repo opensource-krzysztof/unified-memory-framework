@@ -283,20 +283,22 @@ jobs:
    #     cmake --version
    #     make --version
    #     gcc --version
-
-   - name: Install MSYS2
-     uses: msys2/setup-msys2@v2
-     with:
-       update: true
-       install: "make cmake"
-
-
    - name: Build UMF
      shell: cmd
      run: |
        call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
        call "C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat"
        echo "PATH=%PATH%" >> $env:GITHUB_ENV
+       
+   - name: Install MSYS2
+     uses: msys2/setup-msys2@v2
+     with:
+       path-type: minimal
+       update: true
+       install: "make cmake"
+
+
+
       
    - name: Configure build
      shell: msys2 {0}
@@ -305,7 +307,7 @@ jobs:
        cmake \
          -B "/d/a/unified-memory-framework/unified-memory-framework/bulid" \
          -DCMAKE_PREFIX_PATH="$PATH:/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/hwloc_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/tbb_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/jemalloc_x64-windows" \
-         -DCMAKE_C_COMPILER="$PATH:/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin/${{matrix.compiler.c}}" \
+         -DCMAKE_C_COMPILER="/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin/${{matrix.compiler.c}}" \
          -DCMAKE_CXX_COMPILER=${{matrix.compiler.cxx}} \
          -G "Unix Makefiles" \
          -DUMF_BUILD_SHARED_LIBRARY=${{matrix.shared_library}} \

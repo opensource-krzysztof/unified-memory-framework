@@ -294,6 +294,7 @@ jobs:
    - name: Install MSYS2
      uses: msys2/setup-msys2@v2
      with:
+       msystem: mingw64
        path-type: inherit
        update: true
        install: "make cmake"
@@ -304,7 +305,7 @@ jobs:
    - name: Configure build
      shell: msys2 {0}
      run: |
-       echo $PATH
+       printenv
        cmake \
          -B "/d/a/unified-memory-framework/unified-memory-framework/bulid" \
          -DCMAKE_PREFIX_PATH="$PATH:/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/hwloc_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/tbb_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/jemalloc_x64-windows" \

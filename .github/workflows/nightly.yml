@@ -246,7 +246,7 @@ jobs:
        vcpkgDirectory: ${{env.BUILD_DIR}}/vcpkg
        vcpkgJsonGlob: '**/vcpkg.json'
   
-   - name: Install dependencies
+   - name: Install dependencies.
      run: vcpkg install --triplet x64-windows
   
    - name: Install Ninja

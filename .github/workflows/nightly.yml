@@ -286,12 +286,9 @@ jobs:
    - name: Check vars
      shell: cmd
      run: |
-       set > before.txt
        call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
        call "C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat"
-       echo "PATH=%PATH%" >> $env:GITHUB_ENV
-       set > after.txt
-       fc before.txt after.txt
+
        
    - name: Install MSYS2
      uses: msys2/setup-msys2@v2
@@ -308,6 +305,29 @@ jobs:
      shell: msys2 {0}
      run: |
        printenv
+
+       export ONEAPI_COMPILER="${ONEAPI_ROOT}/compiler/latest/windows"
+       export PATH="${ONEAPI_COMPILER}/bin:${PATH}"
+
+       # Set compiler-specific env vars (for includes/libs) export CPATH="${ONEAPI_COMPILER}/include:${CPATH}"
+       export LIBRARY_PATH="${ONEAPI_COMPILER}/lib:${LIBRARY_PATH}"
+       export LD_LIBRARY_PATH="${ONEAPI_COMPILER}/lib:${LD_LIBRARY_PATH}"
+       export MKLROOT="${ONEAPI_ROOT}/mkl/latest"
+       export PATH="${MKLROOT}/bin:${PATH}"
+       export CPATH="${MKLROOT}/include:${CPATH}"
+       export LIBRARY_PATH="${MKLROOT}/lib/intel64:${LIBRARY_PATH}"
+       export LD_LIBRARY_PATH="${MKLROOT}/lib/intel64:${LD_LIBRARY_PATH}"
+       export TBBROOT="${ONEAPI_ROOT}/tbb/latest"
+       export PATH="${TBBROOT}/bin:${PATH}"
+       export CPATH="${TBBROOT}/include:${CPATH}"
+       export LIBRARY_PATH="${TBBROOT}/lib/intel64:${LIBRARY_PATH}"
+       export LD_LIBRARY_PATH="${TBBROOT}/lib/intel64:${LD_LIBRARY_PATH}"
+       export PATH="${ONEAPI_ROOT}/dpcpp-ct/latest/bin:${PATH}"
+       export I_MPI_ROOT="${ONEAPI_ROOT}/mpi/latest"
+       export PATH="${I_MPI_ROOT}/bin:${PATH}"
+       export INCLUDE="${ONEAPI_COMPILER}/include:${MKLROOT}/include:${TBBROOT}/include"
+       export PATH=$(echo "$PATH" | sed 's/;/:/g')
+
        cmake \
          -B "/d/a/unified-memory-framework/unified-memory-framework/bulid" \
          -DCMAKE_PREFIX_PATH="$PATH:/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/hwloc_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/tbb_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/jemalloc_x64-windows" \

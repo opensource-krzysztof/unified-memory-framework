@@ -327,6 +327,8 @@ jobs:
        export PATH="${I_MPI_ROOT}/bin:${PATH}"
        export INCLUDE="${ONEAPI_COMPILER}/include:${MKLROOT}/include:${TBBROOT}/include"
        export PATH=$(echo "$PATH" | sed 's/;/:/g')
+       export CMAKE_C_DEPFILE_FORMAT="gcc"
+       export CMAKE_C_DEPENDS_USE_COMPILER="TRUE"
 
        cmake \
          -B "/d/a/unified-memory-framework/unified-memory-framework/bulid" \

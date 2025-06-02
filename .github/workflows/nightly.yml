@@ -283,13 +283,15 @@ jobs:
    #     cmake --version
    #     make --version
    #     gcc --version
-   - name: Build UMF
+   - name: Check vars
      shell: cmd
      run: |
+       set > before.txt
        call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
        call "C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat"
        echo "PATH=%PATH%" >> $env:GITHUB_ENV
-       SET
+       set > after.txt
+       fc before.txt after.txt
        
    - name: Install MSYS2
      uses: msys2/setup-msys2@v2

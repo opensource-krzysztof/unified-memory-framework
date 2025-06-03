@@ -305,27 +305,27 @@ jobs:
      shell: msys2 {0}
      run: |
        echo "UMF_VERSION=$version" >> $env:GITHUB_ENV
-       echo "ONEAPI_ROOT="/c/Program Files (x86)/Intel/oneAPI" >> $env:GITHUB_ENV
-       echo "ONEAPI_COMPILER="${ONEAPI_ROOT}/compiler/latest/windows" >> $env:GITHUB_ENV
-       echo "PATH="${ONEAPI_COMPILER}/bin:${PATH}" >> $env:GITHUB_ENV
+       echo "ONEAPI_ROOT=/c/Program Files (x86)/Intel/oneAPI" >> $env:GITHUB_ENV
+       echo "ONEAPI_COMPILER=${ONEAPI_ROOT}/compiler/latest/windows" >> $env:GITHUB_ENV
+       echo "PATH=${ONEAPI_COMPILER}/bin:${PATH}" >> $env:GITHUB_ENV
 
-       echo "CPATH="${ONEAPI_COMPILER}/include:${CPATH}" >> $env:GITHUB_ENV
-       echo "LIBRARY_PATH="${ONEAPI_COMPILER}/lib:${LIBRARY_PATH}" >> $env:GITHUB_ENV
-       echo "LD_LIBRARY_PATH="${ONEAPI_COMPILER}/lib:${LD_LIBRARY_PATH}" >> $env:GITHUB_ENV
-       echo "MKLROOT="${ONEAPI_ROOT}/mkl/latest" >> $env:GITHUB_ENV
-       echo "PATH="${MKLROOT}/bin:${PATH}" >> $env:GITHUB_ENV
-       echo "CPATH="${MKLROOT}/include:${CPATH}" >> $env:GITHUB_ENV
-       echo "LIBRARY_PATH="${MKLROOT}/lib/intel64:${LIBRARY_PATH}" >> $env:GITHUB_ENV
-       echo "LD_LIBRARY_PATH="${MKLROOT}/lib/intel64:${LD_LIBRARY_PATH}" >> $env:GITHUB_ENV
-       echo "TBBROOT="${ONEAPI_ROOT}/tbb/latest" >> $env:GITHUB_ENV
-       echo "PATH="${TBBROOT}/bin:${PATH}" >> $env:GITHUB_ENV
-       echo "CPATH="${TBBROOT}/include:${CPATH}" >> $env:GITHUB_ENV
-       echo "LIBRARY_PATH="${TBBROOT}/lib/intel64:${LIBRARY_PATH}" >> $env:GITHUB_ENV
-       echo "LD_LIBRARY_PATH="${TBBROOT}/lib/intel64:${LD_LIBRARY_PATH}" >> $env:GITHUB_ENV
-       echo "PATH="${ONEAPI_ROOT}/dpcpp-ct/latest/bin:${PATH}" >> $env:GITHUB_ENV
-       echo "I_MPI_ROOT="${ONEAPI_ROOT}/mpi/latest" >> $env:GITHUB_ENV
-       echo "PATH="${I_MPI_ROOT}/bin:${PATH}" >> $env:GITHUB_ENV
-       echo "INCLUDE="${ONEAPI_COMPILER}/include:${MKLROOT}/include:${TBBROOT}/include"
+       echo "CPATH=${ONEAPI_COMPILER}/include:${CPATH}" >> $env:GITHUB_ENV
+       echo "LIBRARY_PATH=${ONEAPI_COMPILER}/lib:${LIBRARY_PATH}" >> $env:GITHUB_ENV
+       echo "LD_LIBRARY_PATH=${ONEAPI_COMPILER}/lib:${LD_LIBRARY_PATH}" >> $env:GITHUB_ENV
+       echo "MKLROOT=${ONEAPI_ROOT}/mkl/latest" >> $env:GITHUB_ENV
+       echo "PATH=${MKLROOT}/bin:${PATH}" >> $env:GITHUB_ENV
+       echo "CPATH=${MKLROOT}/include:${CPATH}" >> $env:GITHUB_ENV
+       echo "LIBRARY_PATH=${MKLROOT}/lib/intel64:${LIBRARY_PATH}" >> $env:GITHUB_ENV
+       echo "LD_LIBRARY_PATH=${MKLROOT}/lib/intel64:${LD_LIBRARY_PATH}" >> $env:GITHUB_ENV
+       echo "TBBROOT=${ONEAPI_ROOT}/tbb/latest" >> $env:GITHUB_ENV
+       echo "PATH=${TBBROOT}/bin:${PATH}" >> $env:GITHUB_ENV
+       echo "CPATH=${TBBROOT}/include:${CPATH}" >> $env:GITHUB_ENV
+       echo "LIBRARY_PATH=${TBBROOT}/lib/intel64:${LIBRARY_PATH}" >> $env:GITHUB_ENV
+       echo "LD_LIBRARY_PATH=${TBBROOT}/lib/intel64:${LD_LIBRARY_PATH}" >> $env:GITHUB_ENV
+       echo "PATH=${ONEAPI_ROOT}/dpcpp-ct/latest/bin:${PATH}" >> $env:GITHUB_ENV
+       echo "I_MPI_ROOT=${ONEAPI_ROOT}/mpi/latest" >> $env:GITHUB_ENV
+       echo "PATH=${I_MPI_ROOT}/bin:${PATH}" >> $env:GITHUB_ENV
+       echo "INCLUDE=${ONEAPI_COMPILER}/include:${MKLROOT}/include:${TBBROOT}/include"
        echo "PATH=$(echo "$PATH" | sed 's/;/:/g')" >> $env:GITHUB_ENV
        echo "CMAKE_C_DEPFILE_FORMAT=gcc" >> $env:GITHUB_ENV
        echo "CMAKE_C_DEPENDS_USE_COMPILER=TRUE" >> $env:GITHUB_ENV

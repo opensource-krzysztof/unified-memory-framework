@@ -11,8 +11,8 @@ permissions:
   contents: read
 
 env:
-  BUILD_DIR : "${{github.workspace}}/build"
-  INSTALL_DIR: "${{github.workspace}}/bulid/install"
+  BUILD_DIR : "${{github.workspace}}\build"
+  INSTALL_DIR: "${{github.workspace}}\bulid\install"
 
 jobs:
 #   fuzz-test:

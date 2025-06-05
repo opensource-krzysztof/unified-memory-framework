@@ -223,7 +223,7 @@ jobs:
      matrix:
        os: ['windows-2019', 'windows-2022']
        build_type: [Debug]
-       compiler: [{c: icx, cxx: icx}]
+       compiler: [{c: icx, cxx: icpx}]
        shared_library: ['ON', 'OFF']
        include:
          - os: windows-2022

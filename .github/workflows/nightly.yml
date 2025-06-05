@@ -304,7 +304,11 @@ jobs:
 
 
 
-
+   - name: Set environment variables for Intel oneAPI
+     run: |
+        echo "::add-path::C:\Program Files (x86)\Intel\oneAPI\compiler\latest\windows\bin"
+        echo "::set-env name=CC::icx"
+        echo "::set-env name=CXX::icpx"
       
    - name: Configure build
      shell: msys2 {0}
@@ -314,8 +318,8 @@ jobs:
        cmake \
          -B "/d/a/unified-memory-framework/unified-memory-framework/bulid" \
          -DCMAKE_PREFIX_PATH="$PATH:/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/hwloc_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/tbb_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/jemalloc_x64-windows" \
-         -DCMAKE_C_COMPILER="/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin/${{matrix.compiler.c}}" \
-         -DCMAKE_CXX_COMPILER="/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin/${{matrix.compiler.cxx}}" \
+         -DCMAKE_C_COMPILER="${{matrix.compiler.c}}" \
+         -DCMAKE_CXX_COMPILER="${{matrix.compiler.cxx}}" \
          -G "Unix Makefiles" \
          -DUMF_BUILD_SHARED_LIBRARY=${{matrix.shared_library}} \
          -DUMF_FORMAT_CODE_STYLE=OFF \

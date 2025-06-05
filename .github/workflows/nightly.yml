@@ -283,20 +283,25 @@ jobs:
    #     cmake --version
    #     make --version
    #     gcc --version
-   - name: Check vars
-     shell: cmd
-     run: |
-       call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
-       call "C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat"
 
-       
    - name: Install MSYS2
      uses: msys2/setup-msys2@v2
      with:
        msystem: mingw64
        path-type: inherit
        update: true
-       install: "make cmake"
+       install: "make cmake mingw-w64-x86_64-gcc"
+   - name: Check vars
+     shell: cmd
+     run: |
+       echo "::add-path::C:\msys64\mingw64\bin"
+       echo "::add-path::C:\msys64\usr\bin"
+       echo "::add-path::C:\msys64\bin"
+       call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"
+       call "C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat"
+ 
+       
+
 
 
 
@@ -304,6 +309,7 @@ jobs:
    - name: Configure build
      shell: msys2 {0}
      run: |
+       gcc --version
        source scripts/load.sh
        cmake \
          -B "/d/a/unified-memory-framework/unified-memory-framework/bulid" \

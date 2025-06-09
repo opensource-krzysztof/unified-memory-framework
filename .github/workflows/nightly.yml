@@ -291,7 +291,7 @@ jobs:
        msystem: mingw64
        path-type: inherit
        update: true
-       install: "make cmake mingw-w64-x86_64-gcc icpx icx"
+       install: "make cmake mingw-w64-x86_64-gcc"
    - name: Check vars
      shell: cmd
      run: |

@@ -314,6 +314,7 @@ jobs:
    - name: Configure build
      shell: msys2 {0}
      run: |
+       find /c
        gcc --version
        source scripts/load.sh
 

@@ -219,6 +219,7 @@ jobs:
    name: ICX
    env:
      VCPKG_PATH: ""
+     ACTIONS_ALLOW_UNSECURE_COMMANDS: true
    strategy:
      matrix:
        os: ['windows-2019', 'windows-2022']

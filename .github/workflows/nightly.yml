@@ -229,7 +229,7 @@ jobs:
        include:
          - os: windows-2022
            build_type: Release
-           compiler: {c: icx, cxx: icx}
+           compiler: {c: icx, cxx: icpx}
            shared_library: 'ON'
   
    runs-on: ${{matrix.os}}
@@ -291,7 +291,7 @@ jobs:
        msystem: mingw64
        path-type: inherit
        update: true
-       install: "make cmake mingw-w64-x86_64-gcc"
+       install: "make cmake mingw-w64-x86_64-gcc icpx icx"
    - name: Check vars
      shell: cmd
      run: |
@@ -329,7 +329,7 @@ jobs:
          -DUMF_BUILD_LEVEL_ZERO_PROVIDER=ON \
          -DUMF_BUILD_CUDA_PROVIDER=ON \
          -DUMF_TESTS_FAIL_ON_SKIP=ON \
-         -DCMAKE_C_DEPFILE_FORMAT=gcc
+         -DCMAKE_C_DEPFILE_FORMAT=icx
   
    - name: Build UMF
      shell: cmd

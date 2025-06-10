@@ -314,8 +314,6 @@ jobs:
    - name: Configure build
      shell: msys2 {0}
      run: |
-       # find /c
-       # gcc --version
        source scripts/load.sh
 
        /c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin/icx.exe --version

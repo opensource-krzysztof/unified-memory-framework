@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Export environment variables
+export CC="/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin/icx.exe"
+export CXX="/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin/icpx.exe"
 export CI=true
 export CMAKE_PREFIX_PATH="/c/Program Files (x86)/Intel/oneAPI/tbb/latest/env:/c/Program Files (x86)/Intel/oneAPI/dpl/latest/lib/cmake/oneDPL:/c/Program Files (x86)/Intel/oneAPI/compiler/latest"
 export CMPLR_ROOT="/c/Program Files (x86)/Intel/oneAPI/compiler/latest"

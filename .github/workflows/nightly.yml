@@ -316,8 +316,8 @@ jobs:
      run: |
        source scripts/load.sh
        echo $PATH
-       cmd //C "call \"C:\Program Files (x86)\Intel\oneAPI\setvars.bat\""
-       cmd //C "call \"C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat\""
+       cmd /C "call \"C:\Program Files (x86)\Intel\oneAPI\setvars.bat\""
+       cmd /C "call \"C:\Program Files (x86)\Intel\oneAPI\setvars-vcvarsall.bat\""
        echo $PATH
        cmake \
          -B "/d/a/unified-memory-framework/unified-memory-framework/bulid" \

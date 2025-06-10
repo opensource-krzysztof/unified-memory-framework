@@ -315,6 +315,7 @@ jobs:
      shell: msys2 {0}
      run: |
        source scripts/load.sh
+       echo $PATH
        cmake \
          -B "/d/a/unified-memory-framework/unified-memory-framework/bulid" \
          -DCMAKE_PREFIX_PATH="$PATH:/c/Program Files (x86)/Intel/oneAPI/compiler/latest/windows/bin:/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/hwloc_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/tbb_x64-windows:/d/a/unified-memory-framework/unified-memory-framework/build/vcpkg/packages/jemalloc_x64-windows" \

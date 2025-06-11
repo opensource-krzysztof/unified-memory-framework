@@ -291,7 +291,7 @@ jobs:
        msystem: mingw64
        path-type: inherit
        update: true
-       install: "make cmake mingw-w64-x86_64-gcc"
+       install: "mingw-w64-x86_64-gcc"
    - name: Check vars
      shell: cmd
      run: |
@@ -314,6 +314,7 @@ jobs:
    - name: Configure build
      shell: msys2 {0}
      run: |
+       cat /c/Program Files (x86)/Intel/oneAPI/setvars.bat
        source scripts/load.sh
        echo $PATH
        export PATH="$PATH:/c/Program Files (x86)/Intel/oneAPI/compiler/2024.2/bin/"
